@@ -1,10 +1,11 @@
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, status
+from rest_framework.response import Response
 
-from authentification.models import Account
-from authentification.permissions import IsAccountOwner
-from authentification.serializers import AccountSerializer
+from authentication.models import Account
+from authentication.permissions import IsAccountOwner
+from authentication.serializers import AccountSerializer
 
-class AccountViewSets(viewsets.ModelViewSet):
+class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'username'
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
@@ -31,5 +32,5 @@ class AccountViewSets(viewsets.ModelViewSet):
 
         return Response({
             'status': 'Bad request',
-            'message': 'Account could not be created with received data.'
+            'message': 'Account could not be created with received data.',
         }, status=status.HTTP_400_BAD_REQUEST)
