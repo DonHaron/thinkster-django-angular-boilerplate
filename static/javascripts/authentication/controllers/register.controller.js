@@ -12,8 +12,16 @@
 
         vm.register = register;
 
-        function register(){
-            Authentication.register(vm.email, vm.password, vm.username);
+        activate();
+
+        function activate(){
+            if(Authentication.isAuthenticated()){
+                $location.url('/');
+            }
+        }
+
+        function register(email, password, username){
+            Authentication.register(email, password, username);
         }
     }
 })();

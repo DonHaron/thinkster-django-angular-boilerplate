@@ -3,7 +3,7 @@
         <h1>Register</h1>
 
         <div class="well">
-            <form role="form" ng-submit="vm.register()">
+            <form role="form" ng-submit="vm.register(vm.email, vm.password, vm.username)">
                 <div class="form-group">
                     <label for="register__email">Email</label>
                     <input type="email" class="form-control" id="register__email" ng-model="vm.email"
